@@ -9,3 +9,18 @@ npm run build
 npm start
 ```
 Visit http://localhost:3000
+
+Edit `package.json`
+- "name"
+- "description"
+- "author"
+- "license"
+
+# Extra
+```
+npm run clean
+npm run upgrade
+
+npm run lint
+npm run lint:fix
+```
