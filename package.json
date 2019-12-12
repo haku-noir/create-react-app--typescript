@@ -1,0 +1,19 @@
+{
+  "name": "create-react-custom-app",
+  "version": "1.0.0",
+  "description": "Create environment of React + Typescript + webpack + ESLint + Prettier",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haku-noir/create-react-custom-app.git"
+  },
+  "author": "haku-noir",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/haku-noir/create-react-custom-app/issues"
+  },
+  "homepage": "https://github.com/haku-noir/create-react-custom-app#readme"
+}
