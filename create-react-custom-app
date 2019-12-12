@@ -3,6 +3,9 @@
 
 const fs = require('fs-extra');
 const program = require('commander');
+const childProcess = require('child_process');
+const util = require('util');
+const exec = util.promisify(childProcess.exec);
 
 program
   .version('1.0.0', '-v, --version')
@@ -13,13 +16,28 @@ const name = program.args[0];
 
 let appDir = currentDir;
 if(name) appDir = currentDir + '/' + name;
+const appName = name.split('/').slice(-1)[0];
 
+console.log(`Creating ${appName}\n`);
 Promise.resolve()
   .then(() => fs.mkdirsSync(appDir))
   .then(() => fs.copySync(__dirname + '/create', appDir))
   .then(() => {
-    console.log('Success! Run commands');
-    if(name) console.log('cd ' + name + '/');
-    console.log('npm start');
+    console.log('Installing packages...');
+    return exec(`cd ${appDir} && npm install`);
   })
-  .catch(err => console.error(err));
+  .then(() => {
+    console.log('Installed successfully!\n');
+    console.log('Building...');
+    return exec(`cd ${appDir} && npm run build`);
+  })
+  .then(() => {
+    console.log('Builded successfully!\n');
+    console.log('\nRun commands\n');
+    if(name) console.log(`cd ${name}/`);
+    console.log('npm start\n');
+  })
+  .catch(err => {
+    console.log('Fail!');
+    console.error(err)
+  });
