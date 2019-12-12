@@ -2,7 +2,9 @@
   "name": "create-react-custom-app",
   "version": "1.0.0",
   "description": "Create environment of React + Typescript + webpack + ESLint + Prettier",
-  "main": "index.js",
+  "bin": {
+    "create-react-custom-app": "bin/create-react-custom-app"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
