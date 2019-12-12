@@ -1,4 +1,20 @@
 #!/usr/bin/env node
 'use strict'
 
-console.log('create-react-custom-app');
+const fs = require('fs-extra');
+const program = require('commander');
+
+program
+  .version('1.0.0', '-v, --version')
+  .parse(process.argv);
+
+const currentDir = process.cwd();
+let appDir = currentDir;
+
+if(program.args[0]) appDir = currentDir + '/' + program.args[0];
+
+Promise.resolve()
+  .then(() => fs.mkdirsSync(appDir))
+  .then(() => fs.copySync(__dirname + '/create', appDir))
+  .then(() => console.log('success!\ncreate ' + program.args[0]))
+  .catch(err => console.error(err))
