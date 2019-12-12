@@ -17,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/haku-noir/create-react-custom-app/issues"
   },
-  "homepage": "https://github.com/haku-noir/create-react-custom-app#readme"
+  "homepage": "https://github.com/haku-noir/create-react-custom-app#readme",
+  "dependencies": {
+    "commander": "^4.0.1",
+    "fs-extra": "^8.1.0"
+  }
 }
