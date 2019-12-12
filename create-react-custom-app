@@ -9,12 +9,13 @@ program
   .parse(process.argv);
 
 const currentDir = process.cwd();
-let appDir = currentDir;
+const name = program.args[0];
 
-if(program.args[0]) appDir = currentDir + '/' + program.args[0];
+let appDir = currentDir;
+if(name) appDir = currentDir + '/' + name;
 
 Promise.resolve()
   .then(() => fs.mkdirsSync(appDir))
   .then(() => fs.copySync(__dirname + '/create', appDir))
-  .then(() => console.log('success!\ncreate ' + program.args[0]))
+  .then(() => console.log('success!\ncreate ' + name))
   .catch(err => console.error(err))
