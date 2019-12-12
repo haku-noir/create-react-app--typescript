@@ -17,5 +17,9 @@ if(name) appDir = currentDir + '/' + name;
 Promise.resolve()
   .then(() => fs.mkdirsSync(appDir))
   .then(() => fs.copySync(__dirname + '/create', appDir))
-  .then(() => console.log('success!\ncreate ' + name))
-  .catch(err => console.error(err))
+  .then(() => {
+    console.log('Success! Run commands');
+    if(name) console.log('cd ' + name + '/');
+    console.log('npm start');
+  })
+  .catch(err => console.error(err));
