@@ -20,8 +20,13 @@ const appName = name.split('/').slice(-1)[0];
 
 console.log(`Creating ${appName}\n`);
 Promise.resolve()
-  .then(() => fs.mkdirsSync(appDir))
-  .then(() => fs.copySync(__dirname + '/create', appDir))
+  .then(() => fs.mkdirs(appDir))
+  .then(() => fs.copy(__dirname + '/create', appDir))
+  .then(() => {
+    let packageData = require('./create/package.json');
+    packageData.name = appName;
+    return fs.writeFile(appDir + '/package.json', JSON.stringify(packageData, null, '  '));
+  })
   .then(() => {
     console.log('Installing packages...');
     return exec(`cd ${appDir} && npm install`);
