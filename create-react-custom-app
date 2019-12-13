@@ -8,6 +8,7 @@ const util = require('util');
 const exec = util.promisify(childProcess.exec);
 
 program
+  .usage('<app_name> [options]')
   .version('1.0.0', '-v, --version')
   .parse(process.argv);
 
