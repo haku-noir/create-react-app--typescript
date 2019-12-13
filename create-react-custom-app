@@ -10,6 +10,7 @@ const exec = util.promisify(childProcess.exec);
 program
   .usage('<app_name> [options]')
   .version('1.0.0', '-v, --version')
+  .option('-a, --author <author>', 'add author')
   .parse(process.argv);
 
 const currentDir = process.cwd();
@@ -26,6 +27,7 @@ Promise.resolve()
   .then(() => {
     let packageData = require('./create/package.json');
     packageData.name = appName;
+    if(program.author) packageData.author = program.author;
     return fs.writeFile(appDir + '/package.json', JSON.stringify(packageData, null, '  '));
   })
   .then(() => {
