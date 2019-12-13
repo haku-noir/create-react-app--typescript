@@ -1,21 +1,18 @@
-# created-react-app--typescript
+# create-react-custom-app
 Environment construction of React + Typescript + webpack + ESLint + Prettier
 
 # How to use
 ```
-git clone https://github.com/haku-noir/created-react-app--typescript.git
-cd created-react-app--typescript
-npm install
-npm run build
+npx create-react-custom-app <app_name> [-a <author>]
+cd <app_name>
 npm start
 ```
-Visit http://localhost:3000
+Open http://localhost:3000
 
-Edit `package.json`
-- "name"
-- "description"
-- "author"
-- "license"
+# Build&Run
+```
+npm run build && npm start
+```
 
 # ESLint
 ```
@@ -28,5 +25,3 @@ npm run lint:fix
 npm run clean
 npm run upgrade
 ```
-
-[参考](https://qiita.com/haku-noir/items/4693d7b2b01d9087c36b)
