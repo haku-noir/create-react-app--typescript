@@ -11,6 +11,7 @@ program
   .usage('<app_name> [options]')
   .version('1.0.0', '-v, --version')
   .option('-a, --author <author>', 'add author')
+  .option('-m, --minimum', 'create minimum app')
   .parse(process.argv);
 
 const currentDir = process.cwd();
@@ -23,7 +24,10 @@ const appName = name.split('/').slice(-1)[0];
 console.log(`Creating ${appName}\n`);
 Promise.resolve()
   .then(() => fs.mkdirs(appDir))
-  .then(() => fs.copy(`${__dirname}/minimum`, appDir))
+  .then(() => {
+    if(program.minimum) return fs.copy(`${__dirname}/minimum`, appDir);
+    return null;
+  })
   .then(() => {
     let packageData = require(`${appDir}/package.json`);
     packageData.name = appName;
