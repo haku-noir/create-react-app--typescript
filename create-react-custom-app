@@ -23,7 +23,7 @@ const appName = name.split('/').slice(-1)[0];
 console.log(`Creating ${appName}\n`);
 Promise.resolve()
   .then(() => fs.mkdirs(appDir))
-  .then(() => fs.copy(`${__dirname}/create`, appDir))
+  .then(() => fs.copy(`${__dirname}/minimum`, appDir))
   .then(() => {
     let packageData = require(`${appDir}/package.json`);
     packageData.name = appName;
