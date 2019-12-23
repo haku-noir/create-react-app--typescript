@@ -26,7 +26,7 @@ Promise.resolve()
   .then(() => fs.mkdirs(appDir))
   .then(() => {
     if(program.minimum) return fs.copy(`${__dirname}/minimum`, appDir);
-    return null;
+    return fs.copy(`${__dirname}/custom`, appDir);
   })
   .then(() => {
     let packageData = require(`${appDir}/package.json`);
