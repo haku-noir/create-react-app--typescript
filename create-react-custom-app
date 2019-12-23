@@ -17,18 +17,18 @@ const currentDir = process.cwd();
 const name = program.args[0];
 
 let appDir = currentDir;
-if(name) appDir = currentDir + '/' + name;
+if(name) appDir = `${currentDir}/${name}`;
 const appName = name.split('/').slice(-1)[0];
 
 console.log(`Creating ${appName}\n`);
 Promise.resolve()
   .then(() => fs.mkdirs(appDir))
-  .then(() => fs.copy(__dirname + '/create', appDir))
+  .then(() => fs.copy(`${__dirname}/create`, appDir))
   .then(() => {
-    let packageData = require('./create/package.json');
+    let packageData = require(`${appDir}/package.json`);
     packageData.name = appName;
     if(program.author) packageData.author = program.author;
-    return fs.writeFile(appDir + '/package.json', JSON.stringify(packageData, null, '  '));
+    return fs.writeFile(`${appDir}/package.json`, JSON.stringify(packageData, null, '  '));
   })
   .then(() => {
     console.log('Installing packages...');
