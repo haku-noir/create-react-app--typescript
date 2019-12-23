@@ -9,9 +9,9 @@ const exec = util.promisify(childProcess.exec);
 
 program
   .usage('<app_name> [options]')
-  .version('1.0.0', '-v, --version')
   .option('-a, --author <author>', 'add author')
   .option('-m, --minimum', 'create minimum app')
+  .version(require(`${__dirname}/package.json`).version, '-v, --version')
   .parse(process.argv);
 
 const currentDir = process.cwd();
