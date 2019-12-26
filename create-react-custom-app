@@ -19,7 +19,7 @@ const name = program.args[0];
 
 let appDir = currentDir;
 if(name) appDir = `${currentDir}/${name}`;
-const appName = name.split('/').slice(-1)[0];
+const appName = appDir.split('/').slice(-1)[0];
 
 console.log(`Creating ${appName}\n`);
 Promise.resolve()
@@ -47,7 +47,7 @@ Promise.resolve()
     console.log('Builded successfully!\n');
     console.log('\nRun commands\n');
     if(name) console.log(`cd ${name}/`);
-    console.log('npm start\n');
+    console.log('npm init\nnpm start\n');
   })
   .catch(err => {
     console.log('Fail!');
