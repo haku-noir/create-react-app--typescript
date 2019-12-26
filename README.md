@@ -5,6 +5,7 @@ Environment construction of React + Typescript + webpack + ESLint + Prettier
 ```
 npx create-react-custom-app <app_name> [-a <author>]
 cd <app_name>
+npm init
 npm start
 ```
 Open http://localhost:3000
