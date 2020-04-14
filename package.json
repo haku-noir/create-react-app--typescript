@@ -1,6 +1,6 @@
 {
   "name": "create-react-custom-app",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Create environment of React + Typescript + webpack + ESLint + Prettier",
   "bin": {
     "create-react-custom-app": "bin/main"
