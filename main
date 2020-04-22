@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+'use strict'
+
+const program = require('commander');
+
+program
+  .usage('<app_name> [options]')
+  .option('-a, --author <author>', 'add author')
+  .option('-m, --minimum', 'create minimum app')
+  .version(require(`${__dirname}/package.json`).version, '-v, --version')
+  .parse(process.argv);
+
+require(".")(program.args[0], program.author, program.minimum);

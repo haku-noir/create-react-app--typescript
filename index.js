@@ -1,19 +1,10 @@
 const fs = require('fs-extra');
-const program = require('commander');
 const childProcess = require('child_process');
 const util = require('util');
 const exec = util.promisify(childProcess.exec);
 
-module.exports = () => {
-  program
-    .usage('<app_name> [options]')
-    .option('-a, --author <author>', 'add author')
-    .option('-m, --minimum', 'create minimum app')
-    .version(require(`${__dirname}/package.json`).version, '-v, --version')
-    .parse(process.argv);
-
+module.exports = (name, author, minimum) => {
   const currentDir = process.cwd();
-  const name = program.args[0];
 
   let appDir = currentDir;
   if(name) appDir = `${currentDir}/${name}`;
@@ -23,13 +14,13 @@ module.exports = () => {
   Promise.resolve()
     .then(() => fs.mkdirs(appDir))
     .then(() => {
-      if(program.minimum) return fs.copy(`${__dirname}/minimum`, appDir);
+      if(minimum) return fs.copy(`${__dirname}/minimum`, appDir);
       return fs.copy(`${__dirname}/custom`, appDir);
     })
     .then(() => {
       let packageData = require(`${appDir}/package.json`);
       packageData.name = appName;
-      if(program.author) packageData.author = program.author;
+      if(author) packageData.author = author;
       return fs.writeFile(`${appDir}/package.json`, JSON.stringify(packageData, null, '  '));
     })
     .then(() => {
