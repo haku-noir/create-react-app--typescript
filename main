@@ -4,6 +4,7 @@
 const program = require('commander');
 
 program
+  .name('create-react-custom-app')
   .usage('<app_name> [options]')
   .option('-a, --author <author>', 'add author')
   .option('-m, --minimum', 'create minimum app')
