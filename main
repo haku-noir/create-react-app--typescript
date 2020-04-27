@@ -6,8 +6,9 @@ const program = require('commander');
 program
   .name('create-react-custom-app')
   .usage('<app_name> [options]')
-  .option('-a, --author <author>', 'add author')
-  .option('-m, --minimum', 'create minimum app')
+  .description('create an app template of React & Redux')
+  .option('-a, --author <author>', 'set author')
+  .option('-m, --minimum', 'only React without Redux')
   .version(require(`${__dirname}/package.json`).version, '-v, --version')
   .parse(process.argv);
 
