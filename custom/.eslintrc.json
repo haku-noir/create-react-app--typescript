@@ -40,13 +40,12 @@
     }
   },
   "rules": {
-    "@typescript-eslint/no-unused-vars": "error",
-    "react/prop-types": [
-      0
-    ],
-    "react-hooks/rules-of-hooks": "error",
+    "@typescript-eslint/no-unused-vars": 2,
+    "react/prop-types": 0,
+    "react/jsx-props-no-spreading": 0,
+    "react-hooks/rules-of-hooks": 2,
     "react/jsx-filename-extension": [
-      "error",
+      2,
       {
         "extensions": [
           ".js",
@@ -56,14 +55,8 @@
         ]
       }
     ],
-    "import/extensions": [
-      "error", "always",
-      {
-        "js": "never",
-        "jsx": "never",
-        "ts": "never",
-        "tsx": "never"
-      }
-    ]
+    "import/no-unresolved": 0,
+    "import/extensions": 0,
+    "import/prefer-default-export": 0
   }
 }
